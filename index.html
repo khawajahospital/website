@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Khawaja Hospital — Quality Healthcare in Lahore</title>
+  <meta name="description" content="Khawaja Hospital | 24/7 Emergency Care, Advanced Diagnostics, Compassionate Service. Kahna Nau, Lahore.">
+  <meta name="author" content="Khawaja Hospital">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Meta theme -->
+  <meta name="theme-color" content="#0b1220">
+
+  <!-- Minimal favicon (SVG inline fallback) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230b1220'/><text x='50' y='57' font-size='45' font-family='Arial' fill='%23fff' text-anchor='middle'>KH</text></svg>">
+
+  <style>
+    :root{
+      --bg:#071126; /* deep navy */
+      --glass: rgba(255,255,255,0.06);
+      --muted: rgba(255,255,255,0.65);
+      --accent1: #00d4ff; /* cyan */
+      --accent2: #7c4dff; /* violet */
+      --success:#2de39a;
+      --card-radius:18px;
+      --max-width:1180px;
+      --glass-border: rgba(255,255,255,0.06);
+      --glass-2: rgba(255,255,255,0.03);
+      color-scheme: dark;
+    }
+
+    /* Reset-ish */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body,#app{height:100%}
+    body{
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background: radial-gradient(60% 60% at 10% 10%, rgba(124,77,255,0.08), transparent 10%),
+                  radial-gradient(60% 60% at 90% 90%, rgba(0,212,255,0.04), transparent 10%),
+                  linear-gradient(180deg,var(--bg) 0%, #071020 100%);
+      color: #eef6ff;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding-bottom:60px;
+    }
+
+    .container{max-width:var(--max-width);margin:0 auto;padding:28px}
+
+    /* Header */
+    header{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px 0}
+    .brand{display:flex;align-items:center;gap:14px}
+    .logo{width:56px;height:56px;border-radius:12px;display:inline-grid;place-items:center;background:linear-gradient(135deg,var(--accent2),var(--accent1));box-shadow:0 6px 20px rgba(7,18,38,0.6);font-weight:800}
+    .brand h1{font-family:'Roboto Slab', serif;font-size:18px;letter-spacing:0.2px}
+    .brand p{font-size:12px;color:var(--muted);margin-top:2px}
+
+    nav{display:flex;gap:12px;align-items:center}
+    .nav-link{padding:8px 12px;border-radius:12px;color:var(--muted);text-decoration:none;font-weight:600;font-size:14px}
+    .nav-link:hover{color:#fff;background:linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));}
+
+    .cta{background:linear-gradient(90deg,var(--accent1),var(--accent2));padding:10px 14px;border-radius:12px;color:#03121a;font-weight:700;text-decoration:none;font-size:14px}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 460px;gap:28px;align-items:center;padding:36px 0}
+    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:18px;padding:28px;border:1px solid var(--glass-border);box-shadow:0 10px 30px rgba(2,6,23,0.6)}
+    .eyebrow{display:inline-block;background:linear-gradient(90deg,var(--accent1),var(--accent2));padding:6px 10px;border-radius:999px;font-weight:700;color:#03121a;font-size:13px}
+
+    .hero h2{font-size:32px;margin-top:12px;line-height:1.05}
+    .hero p.lead{color:var(--muted);margin-top:14px;font-size:15px}
+
+    .stats{display:flex;gap:12px;margin-top:18px}
+    .stat{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:10px;border-radius:12px;border:1px solid var(--glass-2);min-width:110px}
+    .stat h3{font-size:18px}
+    .stat p{font-size:12px;color:var(--muted)}
+
+    /* Right card: quick actions */
+    .quick-actions{display:flex;flex-direction:column;gap:12px}
+    .card-mini{background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:16px;border-radius:14px;border:1px solid var(--glass-border)}
+    .phone{display:flex;align-items:center;gap:12px}
+    .phone .num{font-weight:800;font-size:18px}
+    .badges{display:flex;gap:8px;flex-wrap:wrap}
+    .badge{padding:8px 10px;border-radius:999px;background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));font-weight:700}
+
+    /* Features grid */
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}
+    .feature{padding:18px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid var(--glass-border)}
+    .feature h4{font-size:16px;margin-bottom:8px}
+    .feature p{color:var(--muted);font-size:13px}
+
+    /* Departments */
+    .departments{margin-top:36px}
+    .dept-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .dept{padding:18px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid var(--glass-border);text-align:center}
+    .dept h5{font-size:15px;margin-bottom:10px}
+    .dept p{font-size:13px;color:var(--muted)}
+
+    /* Doctors section */
+    .doctors{margin-top:46px}
+    .doctor-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .doctor{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:14px;border:1px solid var(--glass-border);display:flex;gap:12px;align-items:center}
+    .avatar{width:72px;height:72px;border-radius:12px;display:inline-grid;place-items:center;background:linear-gradient(180deg, #0f2433, #08202b);font-weight:800}
+    .doc-info h4{margin-bottom:6px}
+    .doc-info p{font-size:13px;color:var(--muted)}
+
+    /* Testimonials */
+    .testimonials{margin-top:46px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);padding:24px;border-radius:16px;border:1px solid var(--glass-border)}
+    .test-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .test{padding:16px;border-radius:12px;background:linear-gradient(90deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));}
+    .test p{color:var(--muted)}
+
+    /* Contact + map */
+    .contact{display:grid;grid-template-columns:1fr 420px;gap:18px;margin-top:36px}
+    form{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px;border:1px solid var(--glass-border)}
+    label{display:block;font-size:13px;margin-bottom:8px;color:var(--muted)}
+    input,textarea,select{width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit;font-size:14px}
+    textarea{min-height:120px}
+    .btn{display:inline-block;padding:10px 14px;border-radius:12px;background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#03121a;font-weight:700;border:none;cursor:pointer}
+    .muted{color:var(--muted)}
+
+    footer{margin-top:46px;padding:28px 0;border-top:1px solid rgba(255,255,255,0.03);display:flex;justify-content:space-between;align-items:center}
+    .socials a{margin-right:10px;text-decoration:none}
+
+    /* Responsive */
+    @media (max-width:1100px){
+      .hero{grid-template-columns:1fr}
+      .contact{grid-template-columns:1fr}
+      .dept-grid{grid-template-columns:repeat(2,1fr)}
+      .doctor-grid{grid-template-columns:repeat(2,1fr)}
+      .features{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:680px){
+      .brand h1{font-size:16px}
+      .nav-link{display:none}
+      .hero h2{font-size:26px}
+      .dept-grid{grid-template-columns:1fr}
+      .doctor-grid{grid-template-columns:1fr}
+      .test-grid{grid-template-columns:1fr}
+    }
+
+    /* subtle animations */
+    .fade-in{animation:fadeUp .8s cubic-bezier(.2,.9,.2,1) both}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+    /* ribbon */
+    .ribbon{position:relative;padding:10px 14px;border-radius:999px;background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#03121a;font-weight:800;display:inline-flex;align-items:center;gap:10px}
+
+    /* subtle glass blur behind hero */
+    .hero-overlay{position:absolute;right:26px;top:120px;width:400px;height:380px;border-radius:24px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);pointer-events:none;opacity:0.06;transform:rotate(8deg)}
+
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="container">
+
+      <!-- Header -->
+      <header>
+        <div class="brand">
+          <div class="logo" aria-hidden="true">KH</div>
+          <div>
+            <h1>Khawaja Hospital</h1>
+            <p>Quality healthcare • Kahna Nau, Lahore</p>
+          </div>
+        </div>
+
+        <nav>
+          <a class="nav-link" href="#about">About</a>
+          <a class="nav-link" href="#departments">Departments</a>
+          <a class="nav-link" href="#doctors">Doctors</a>
+          <a class="nav-link" href="#contact">Contact</a>
+          <a class="cta" href="#appointments">Book Appointment</a>
+        </nav>
+      </header>
+
+      <!-- Hero -->
+      <section class="hero">
+        <div class="hero-card fade-in">
+          <span class="eyebrow">24/7 · Emergency</span>
+          <h2>Compassionate care. Advanced medicine. Close to home.</h2>
+          <p class="lead">Khawaja Hospital provides round-the-clock emergency services, diagnostics, and specialist-led care for the Kahna Nau community and greater Lahore. Our multi-disciplinary team is committed to safe, timely, and compassionate healthcare.</p>
+
+          <div class="stats" role="list">
+            <div class="stat">
+              <h3>24/7</h3>
+              <p>Emergency services & walk-ins</p>
+            </div>
+            <div class="stat">
+              <h3>100+</h3>
+              <p>Experienced staff & specialists</p>
+            </div>
+            <div class="stat">
+              <h3>Advanced</h3>
+              <p>Diagnostics & in-house lab</p>
+            </div>
+          </div>
+
+          <div class="features">
+            <div class="feature">
+              <h4>Emergency & Trauma</h4>
+              <p>Rapid triage and treatment, supported by an experienced emergency team and critical care resources.</p>
+            </div>
+            <div class="feature">
+              <h4>Diagnostics & Laboratory</h4>
+              <p>On-site lab and imaging — fast, accurate results for better decision-making.</p>
+            </div>
+            <div class="feature">
+              <h4>Maternity & Pediatrics</h4>
+              <p>Caring childbirth and pediatric services designed around comfort and safety for mother and child.</p>
+            </div>
+          </div>
+
+          <div style="margin-top:18px;display:flex;gap:12px;align-items:center">
+            <a href="#contact" class="btn">Contact Us</a>
+            <a href="#departments" class="btn" style="background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);">Explore Departments</a>
+          </div>
+
+          <div style="margin-top:18px;color:var(--muted);font-size:13px">
+            <strong>Emergency:</strong> 0323-4837364 | 0321-4155032 • <span class="muted">Address:</span> 24-Km, Main Ferozepur Road, Kahna Nau, Lahore
+          </div>
+        </div>
+
+        <!-- Right: quick actions card -->
+        <aside class="quick-actions">
+          <div class="card-mini fade-in">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <div>
+                <div class="muted">Call Emergency</div>
+                <div class="phone" style="margin-top:8px">
+                  <div class="num">0323-4837364</div>
+                </div>
+              </div>
+              <div style="text-align:right">
+                <div class="muted">Open</div>
+                <div style="font-weight:800">24/7</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-mini fade-in">
+            <div class="muted">Quick Links</div>
+            <div style="margin-top:12px;display:flex;flex-direction:column;gap:8px">
+              <a href="#appointments" class="badge">Book Appointment</a>
+              <a href="#doctors" class="badge">Our Doctors</a>
+              <a href="#services" class="badge">Services & Tests</a>
+            </div>
+          </div>
+
+          <div class="card-mini fade-in">
+            <div class="muted">Follow Us</div>
+            <div style="margin-top:10px;display:flex;gap:8px;align-items:center">
+              <a href="https://www.facebook.com/KhawajaHospitalOfficial" class="badge">Facebook</a>
+              <a href="https://www.instagram.com/khawajahospital/" class="badge">Instagram</a>
+            </div>
+          </div>
+        </aside>
+
+        <div class="hero-overlay" aria-hidden="true">
+          <!-- decorative gradient block -->
+        </div>
+      </section>
+
+      <!-- About -->
+      <section id="about" class="hero-card fade-in" style="margin-top:10px">
+        <div style="display:flex;gap:18px;align-items:center">
+          <div style="flex:1">
+            <h3>About Khawaja Hospital</h3>
+            <p class="muted" style="margin-top:10px">Khawaja Hospital is a community-focused healthcare centre offering a wide range of medical services including emergency care, diagnostics, surgery, maternity, and outpatient services. Our team is composed of experienced physicians, nurses, and allied health professionals committed to evidence-based, compassionate care.</p>
+
+            <div style="display:flex;gap:12px;margin-top:18px">
+              <div style="min-width:160px">
+                <div class="ribbon">Trusted Care</div>
+                <p class="muted" style="margin-top:8px">Community-centered patient care.</p>
+              </div>
+              <div style="min-width:160px">
+                <div class="ribbon">Advanced Diagnostics</div>
+                <p class="muted" style="margin-top:8px">In-house lab & imaging services.</p>
+              </div>
+            </div>
+          </div>
+          <div style="width:320px">
+            <!-- simple stylized illustration -->
+            <svg width="100%" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hospital illustration">
+              <defs>
+                <linearGradient id="g1" x1="0" x2="1">
+                  <stop offset="0" stop-color="#00d4ff" />
+                  <stop offset="1" stop-color="#7c4dff" />
+                </linearGradient>
+              </defs>
+              <rect x="40" y="80" rx="18" width="520" height="220" fill="url(#g1)" opacity="0.08" />
+              <rect x="80" y="120" rx="12" width="440" height="160" fill="#06202b" />
+              <rect x="110" y="150" rx="8" width="120" height="100" fill="#0b1220" opacity="0.9" />
+              <rect x="250" y="150" rx="8" width="120" height="100" fill="#0b1220" opacity="0.9" />
+              <rect x="390" y="150" rx="8" width="120" height="100" fill="#0b1220" opacity="0.9" />
+              <text x="60" y="60" fill="#a9f3ff" font-size="20">Khawaja Hospital</text>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- Departments -->
+      <section id="departments" class="departments">
+        <h3>Our Departments & Services</h3>
+        <p class="muted" style="margin-top:8px">Comprehensive services designed to meet urgent and routine health needs.</p>
+
+        <div class="dept-grid" style="margin-top:18px">
+          <div class="dept">
+            <h5>Emergency & Trauma</h5>
+            <p class="muted">Immediate care for critical conditions with triage and stabilization.</p>
+          </div>
+          <div class="dept">
+            <h5>General Medicine</h5>
+            <p class="muted">Outpatient consultations, chronic disease management, and preventive care.</p>
+          </div>
+          <div class="dept">
+            <h5>Surgery & Orthopedics</h5>
+            <p class="muted">Minor and major surgical procedures with a skilled surgical team.</p>
+          </div>
+          <div class="dept">
+            <h5>Gynecology & Maternity</h5>
+            <p class="muted">Antenatal care, safe delivery, and postpartum support.</p>
+          </div>
+
+          <div class="dept">
+            <h5>Pediatrics</h5>
+            <p class="muted">Child health, immunization, and pediatric consultations.</p>
+          </div>
+          <div class="dept">
+            <h5>Diagnostics</h5>
+            <p class="muted">Lab tests, ultrasound, X-ray and imaging services.</p>
+          </div>
+          <div class="dept">
+            <h5>Pharmacy</h5>
+            <p class="muted">On-site pharmacy with licensed pharmacists.</p>
+          </div>
+          <div class="dept">
+            <h5>Mental Health</h5>
+            <p class="muted">Counseling and psychiatric referrals for a holistic approach.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Doctors -->
+      <section id="doctors" class="doctors">
+        <h3>Our Medical Team</h3>
+        <p class="muted" style="margin-top:8px">Experienced specialists dedicated to patient outcomes.</p>
+
+        <div class="doctor-grid" style="margin-top:18px">
+          <div class="doctor">
+            <div class="avatar">DR</div>
+            <div class="doc-info">
+              <h4>Dr. Maryam Khan</h4>
+              <p class="muted">Senior SQA Engineer turned Consultant? — placeholder. (Use real credentials here). Obstetrics & Gynecology</p>
+            </div>
+          </div>
+
+          <div class="doctor">
+            <div class="avatar">AK</div>
+            <div class="doc-info">
+              <h4>Dr. Asad Khan</h4>
+              <p class="muted">MBBS, General Medicine</p>
+            </div>
+          </div>
+
+          <div class="doctor">
+            <div class="avatar">SM</div>
+            <div class="doc-info">
+              <h4>Dr. Sana Mir</h4>
+              <p class="muted">Pediatrics</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:14px;text-align:right">
+          <a href="#appointments" class="btn">View Full Team</a>
+        </div>
+      </section>
+
+      <!-- Appointments -->
+      <section id="appointments" style="margin-top:36px">
+        <div class="hero-card">
+          <h3>Book an Appointment</h3>
+          <p class="muted" style="margin-top:8px">Use the form to request an appointment — we'll call to confirm. For emergencies call immediately.</p>
+
+          <!-- Using Formspree as a simple static form handler. Replace `YOUR_FORMSPREE_ENDPOINT` with real endpoint -->
+          <form id="appointmentForm" action="https://formspree.io/f/YOUR_FORMSPREE_ENDPOINT" method="POST" style="margin-top:16px">
+            <label for="name">Full Name</label>
+            <input id="name" name="name" required placeholder="e.g. Ali Khan">
+
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" required placeholder="03xx-xxxxxxx">
+
+            <label for="dept">Department</label>
+            <select id="dept" name="department" required>
+              <option value="General Medicine">General Medicine</option>
+              <option value="Emergency">Emergency</option>
+              <option value="Gynecology">Gynecology & Maternity</option>
+              <option value="Pediatrics">Pediatrics</option>
+              <option value="Diagnostics">Diagnostics</option>
+            </select>
+
+            <label for="date">Preferred Date & Time</label>
+            <input id="date" name="datetime" type="datetime-local" required>
+
+            <label for="notes">Notes (optional)</label>
+            <textarea id="notes" name="notes" placeholder="Brief reason for visit or other info"></textarea>
+
+            <div style="display:flex;gap:12px;margin-top:12px;align-items:center">
+              <button class="btn" type="submit">Request Appointment</button>
+              <div class="muted">Or call: <strong style="color:#fff">0323-4837364</strong></div>
+            </div>
+          </form>
+
+          <small class="muted" style="display:block;margin-top:10px">By submitting you agree we'll contact you to confirm. For emergencies call immediately.</small>
+        </div>
+      </section>
+
+      <!-- Services & Pricing (sample) -->
+      <section id="services" style="margin-top:36px">
+        <h3>Common Services & Tests</h3>
+        <p class="muted">Transparent and patient-friendly pricing. (Update prices as needed)</p>
+
+        <div class="hero-card" style="margin-top:12px;padding:16px">
+          <table style="width:100%;border-collapse:collapse;color:inherit">
+            <thead>
+              <tr style="text-align:left; border-bottom:1px solid rgba(255,255,255,0.03)">
+                <th style="padding:10px">Service</th>
+                <th style="padding:10px">Description</th>
+                <th style="padding:10px">Price (PKR)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:10px">Doctor Consultation</td>
+                <td style="padding:10px;color:var(--muted)">Outpatient consultation with specialist</td>
+                <td style="padding:10px">1,000</td>
+              </tr>
+              <tr>
+                <td style="padding:10px">CBC (Blood Test)</td>
+                <td style="padding:10px;color:var(--muted)">Complete blood count</td>
+                <td style="padding:10px">800</td>
+              </tr>
+              <tr>
+                <td style="padding:10px">X-Ray (Single View)</td>
+                <td style="padding:10px;color:var(--muted)">Digital radiography</td>
+                <td style="padding:10px">1,200</td>
+              </tr>
+              <tr>
+                <td style="padding:10px">Ultrasound</td>
+                <td style="padding:10px;color:var(--muted)">Pelvic/Abdominal</td>
+                <td style="padding:10px">2,000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <section class="testimonials">
+        <h3>Patient Stories</h3>
+        <div class="test-grid" style="margin-top:12px">
+          <div class="test">
+            <strong>Ahmed R.</strong>
+            <p class="muted">"Quick and compassionate emergency response—the team helped my father immediately and were very supportive."</p>
+          </div>
+          <div class="test">
+            <strong>Sara L.</strong>
+            <p class="muted">"Professional staff and reassuring maternity care. Highly recommended."</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact & Map -->
+      <section id="contact" class="contact">
+        <div>
+          <h3>Contact & Visit</h3>
+          <p class="muted">We're here for you — reach out or visit us anytime for emergencies.</p>
+
+          <div style="margin-top:12px;display:grid;gap:8px">
+            <div class="hero-card" style="display:flex;gap:12px;align-items:center">
+              <div style="width:58px;height:58px;border-radius:12px;background:linear-gradient(90deg,var(--accent1),var(--accent2));display:grid;place-items:center;font-weight:800">📞</div>
+              <div>
+                <div class="muted">Emergency / Call</div>
+                <div style="font-weight:800">0323-4837364</div>
+                <div style="font-size:13px;color:var(--muted);margin-top:6px">Walk-ins welcome. 24/7 Services.</div>
+              </div>
+            </div>
+
+            <div class="hero-card" style="display:flex;gap:12px;align-items:center">
+              <div style="width:58px;height:58px;border-radius:12px;background:linear-gradient(90deg,#ffd66b,#ff8a6f);display:grid;place-items:center;font-weight:800">📍</div>
+              <div>
+                <div class="muted">Address</div>
+                <div style="font-weight:800">24-Km, Main Ferozepur Road, Kahna Nau, Lahore</div>
+              </div>
+            </div>
+
+            <div class="hero-card" style="display:flex;gap:12px;align-items:center">
+              <div style="width:58px;height:58px;border-radius:12px;background:linear-gradient(90deg,#9be7ff,#7c4dff);display:grid;place-items:center;font-weight:800">✉️</div>
+              <div>
+                <div class="muted">Email</div>
+                <div style="font-weight:800">khawajahospitalofficial@gmail.com</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside>
+          <!-- Map embed - use your Google Maps link or static image -->
+          <div style="border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.03)">
+            <iframe title="Khawaja Hospital Location"
+              src="https://www.google.com/maps?q=Kahna%20Nau%20Lahore&output=embed"
+              width="100%" height="420" style="border:0;display:block"></iframe>
+          </div>
+        </aside>
+      </section>
+
+      <!-- Footer -->
+      <footer>
+        <div>
+          <strong>Khawaja Hospital</strong>
+          <div class="muted" style="margin-top:6px">24-Km, Main Ferozepur Road, Kahna Nau, Lahore • 24/7 Emergency</div>
+        </div>
+
+        <div style="text-align:right">
+          <div class="socials muted">
+            <a href="https://www.facebook.com/KhawajaHospitalOfficial">Facebook</a> •
+            <a href="https://www.instagram.com/khawajahospital/">Instagram</a> •
+            <a href="https://linkedin.com/company/khawaja-hospital">LinkedIn</a>
+          </div>
+          <div style="margin-top:8px;color:var(--muted)">© <span id="year"></span> Khawaja Hospital</div>
+        </div>
+      </footer>
+
+    </div>
+  </div>
+
+  <script>
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // lightweight form validation UX
+    const form = document.getElementById('appointmentForm');
+    if(form){
+      form.addEventListener('submit', (e)=>{
+        // basic validation; let Formspree handle real submit
+        const phone = document.getElementById('phone');
+        if(!phone.value || phone.value.trim().length<8){
+          e.preventDefault();
+          alert('Please provide a valid phone number.');
+          phone.focus();
+          return false;
+        }
+        // show simple toast
+        const btn = form.querySelector('button[type=submit]');
+        btn.textContent = 'Sending...';
+        btn.disabled = true;
+      })
+    }
+
+    // Smooth scroll for in-page links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        e.preventDefault();
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+      })
+    })
+
+    // Tiny accessibility: focus outlines on keyboard nav
+    document.body.addEventListener('keydown', (e)=>{
+      if(e.key==='Tab') document.documentElement.style.scrollBehavior='smooth';
+    })
+  </script>
+
+  <!-- License & credits (kept in HTML as comment so visible in repo) -->
+  <!--
+    Index template for Khawaja Hospital
+    - Built for GitHub Pages (static site)
+    - Replace placeholder doctor names, contact endpoints, and Formspree ID before publishing
+    - To use a custom domain, add a CNAME file to the gh-pages repo and configure DNS
+    - Licensed: CC BY-SA 4.0 (modify as desired)
+  -->
+</body>
+
+</html>
